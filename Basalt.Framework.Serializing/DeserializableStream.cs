@@ -17,103 +17,71 @@ public class DeserializableStream
             throw new SerializingException("Can not read past the length of the stream");
     }
 
+    private T Read_generic<T>(int size, Func<byte[], int, T> func)
+    {
+        ValidateReadLength(size);
+
+        T value = func(_bytes, _pointer);
+        _pointer += size;
+        return value;
+    }
+
     public byte Read_byte()
     {
         ValidateReadLength(1);
-
-        byte value = _bytes[_pointer];
-        _pointer += 1;
-        return value;
+        return _bytes[_pointer++];
     }
 
     public sbyte Read_sbyte()
     {
         ValidateReadLength(1);
-
-        sbyte value = (sbyte)_bytes[_pointer];
-        _pointer += 1;
-        return value;
+        return (sbyte)_bytes[_pointer++];
     }
 
     public ushort Read_ushort()
     {
-        ValidateReadLength(2);
-
-        ushort value = BitConverter.ToUInt16(_bytes, _pointer);
-        _pointer += 2;
-        return value;
+        return Read_generic(2, BitConverter.ToUInt16);
     }
 
     public short Read_short()
     {
-        ValidateReadLength(2);
-
-        short value = BitConverter.ToInt16(_bytes, _pointer);
-        _pointer += 2;
-        return value;
+        return Read_generic(2, BitConverter.ToInt16);
     }
 
     public uint Read_uint()
     {
-        ValidateReadLength(4);
-
-        uint value = BitConverter.ToUInt32(_bytes, _pointer);
-        _pointer += 4;
-        return value;
+        return Read_generic(4, BitConverter.ToUInt32);
     }
 
     public int Read_int()
     {
-        ValidateReadLength(4);
-
-        int value = BitConverter.ToInt32(_bytes, _pointer);
-        _pointer += 4;
-        return value;
+        return Read_generic(4, BitConverter.ToInt32);
     }
 
     public ulong Read_ulong()
     {
-        ValidateReadLength(8);
-
-        ulong value = BitConverter.ToUInt64(_bytes, _pointer);
-        _pointer += 8;
-        return value;
+        return Read_generic(8, BitConverter.ToUInt64);
     }
 
     public long Read_long()
     {
-        ValidateReadLength(8);
-
-        long value = BitConverter.ToInt64(_bytes, _pointer);
-        _pointer += 8;
-        return value;
+        return Read_generic(8, BitConverter.ToInt64);
     }
 
     public float Read_float()
     {
-        ValidateReadLength(4);
-
-        float value = BitConverter.ToSingle(_bytes, _pointer);
-        _pointer += 4;
-        return value;
+        return Read_generic(4, BitConverter.ToSingle);
     }
 
     public double Read_double()
     {
-        ValidateReadLength(8);
-
-        double value = BitConverter.ToDouble(_bytes, _pointer);
-        _pointer += 8;
-        return value;
+        return Read_generic(8, BitConverter.ToDouble);
     }
 
     public char Read_char()
     {
         ValidateReadLength(1);
-
-        char value = Convert.ToChar(_bytes[_pointer]);
-        _pointer += 1;
-        return value;
+        return Convert.ToChar(_bytes[_pointer++]);
     }
 
     public string Read_string()
