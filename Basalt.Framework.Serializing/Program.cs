@@ -1,4 +1,6 @@
-﻿namespace Basalt.Framework.Serializing;
+﻿using System.Text;
+
+namespace Basalt.Framework.Serializing;
 
 internal class Program
 {

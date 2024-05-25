@@ -1,5 +1,4 @@
-﻿using System.Text;
-
+﻿
 namespace Basalt.Framework.Serializing;
 
 public class SerializableStream
@@ -69,11 +68,13 @@ public class SerializableStream
             return;
         }
 
-        if (data.Length > 255)
-            throw new SerializingException("Can not serialize a string more than 255 characters");
+        var bytes = SerializingProperties.TextEncoding.GetBytes(data);
 
-        _bytes.Add((byte)data.Length);
-        _bytes.AddRange(Encoding.UTF8.GetBytes(data));
+        if (bytes.Length > 255)
+            throw new SerializingException("Can not serialize a string with more than 255 bytes");
+
+        _bytes.Add((byte)bytes.Length);
+        _bytes.AddRange(bytes);
     }
 
     public static implicit operator byte[](SerializableStream stream) => stream._bytes.ToArray();
