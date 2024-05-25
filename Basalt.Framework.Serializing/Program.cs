@@ -11,19 +11,25 @@ internal class Program
         byte type = 5;
         uint bitfield = 0x12;
         double dec = 5.56;
+        string? str = null;
 
         var stream = new SerializableStream();
         stream.Write(type);
         stream.Write(bitfield);
         stream.Write(dec);
+        stream.Write(str);
         stream.Write("Test");
 
         File.WriteAllBytes(Environment.CurrentDirectory + "/test.txt", stream);
         byte[] bytes = stream;
 
-        foreach (var value in bytes)
-        {
-            Console.WriteLine(value);
-        }
+        var dStream = new DeserializableStream(bytes);
+        Console.WriteLine(dStream.Read_byte());
+        Console.WriteLine(dStream.Read_uint());
+        Console.WriteLine(dStream.Read_double());
+        Console.WriteLine(dStream.Read_string());
+        Console.WriteLine(dStream.Read_string());
+
+        Console.ReadKey();
     }
 }

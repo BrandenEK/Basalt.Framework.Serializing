@@ -60,7 +60,7 @@ public class SerializableStream
         _bytes.Add(Convert.ToByte(data));
     }
 
-    public void Write(string data)
+    public void Write(string? data)
     {
         if (string.IsNullOrEmpty(data))
         {
