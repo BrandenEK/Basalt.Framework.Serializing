@@ -14,11 +14,11 @@ internal class Program
         string? str = null;
 
         var stream = new SerializableStream();
-        stream.Write(type);
-        stream.Write(bitfield);
-        stream.Write(dec);
-        stream.Write(str);
-        stream.Write("Test");
+        stream.Write_byte(type);
+        stream.Write_uint(bitfield);
+        stream.Write_double(dec);
+        stream.Write_string(str);
+        stream.Write_string("Test");
 
         File.WriteAllBytes(path, stream);
 

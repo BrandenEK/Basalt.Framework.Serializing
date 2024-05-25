@@ -5,62 +5,62 @@ public class SerializableStream
 {
     private readonly List<byte> _bytes = new();
 
-    public void Write(byte data)
+    public void Write_byte(byte data)
     {
         _bytes.Add(data);
     }
 
-    public void Write(sbyte data)
+    public void Write_sbyte(sbyte data)
     {
         _bytes.Add((byte)data);
     }
 
-    public void Write(ushort data)
+    public void Write_ushort(ushort data)
     {
         _bytes.AddRange(BitConverter.GetBytes(data));
     }
 
-    public void Write(short data)
+    public void Write_short(short data)
     {
         _bytes.AddRange(BitConverter.GetBytes(data));
     }
 
-    public void Write(uint data)
+    public void Write_uint(uint data)
     {
         _bytes.AddRange(BitConverter.GetBytes(data));
     }
 
-    public void Write(int data)
+    public void Write_int(int data)
     {
         _bytes.AddRange(BitConverter.GetBytes(data));
     }
 
-    public void Write(ulong data)
+    public void Write_ulong(ulong data)
     {
         _bytes.AddRange(BitConverter.GetBytes(data));
     }
 
-    public void Write(long data)
+    public void Write_long(long data)
     {
         _bytes.AddRange(BitConverter.GetBytes(data));
     }
 
-    public void Write(float data)
+    public void Write_float(float data)
     {
         _bytes.AddRange(BitConverter.GetBytes(data));
     }
 
-    public void Write(double data)
+    public void Write_double(double data)
     {
         _bytes.AddRange(BitConverter.GetBytes(data));
     }
 
-    public void Write(char data)
+    public void Write_char(char data)
     {
         _bytes.Add(Convert.ToByte(data));
     }
 
-    public void Write(string? data)
+    public void Write_string(string? data)
     {
         if (string.IsNullOrEmpty(data))
         {
