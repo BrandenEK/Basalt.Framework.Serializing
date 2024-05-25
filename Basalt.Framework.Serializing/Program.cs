@@ -14,6 +14,7 @@ internal class Program
         stream.Write(type);
         stream.Write(bitfield);
         stream.Write(dec);
+        stream.Write("Test");
 
         File.WriteAllBytes(Environment.CurrentDirectory + "/test.txt", stream);
         byte[] bytes = stream;
