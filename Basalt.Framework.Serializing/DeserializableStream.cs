@@ -6,7 +6,7 @@ public class DeserializableStream
     private readonly byte[] _bytes;
     private int _pointer = 0;
 
-    public DeserializableStream(byte[] bytes)
+    private DeserializableStream(byte[] bytes)
     {
         _bytes = bytes;
     }
@@ -129,4 +129,6 @@ public class DeserializableStream
         _pointer += length;
         return value;
     }
+
+    public static implicit operator DeserializableStream(byte[] bytes) => new DeserializableStream(bytes);
 }

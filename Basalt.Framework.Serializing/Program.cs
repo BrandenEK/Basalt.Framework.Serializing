@@ -1,5 +1,4 @@
-﻿using System.Text;
-
+﻿
 namespace Basalt.Framework.Serializing;
 
 internal class Program
@@ -7,6 +6,7 @@ internal class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
+        string path = Environment.CurrentDirectory + "/test.txt";
 
         byte type = 5;
         uint bitfield = 0x12;
@@ -20,10 +20,9 @@ internal class Program
         stream.Write(str);
         stream.Write("Test");
 
-        File.WriteAllBytes(Environment.CurrentDirectory + "/test.txt", stream);
-        byte[] bytes = stream;
+        File.WriteAllBytes(path, stream);
 
-        var dStream = new DeserializableStream(bytes);
+        DeserializableStream dStream = File.ReadAllBytes(path);
         Console.WriteLine(dStream.Read_byte());
         Console.WriteLine(dStream.Read_uint());
         Console.WriteLine(dStream.Read_double());
