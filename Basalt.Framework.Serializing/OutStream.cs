@@ -1,4 +1,6 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+
 namespace Basalt.Framework.Serializing;
 
 /// <summary>
