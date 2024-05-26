@@ -1,7 +1,10 @@
 ﻿
 namespace Basalt.Framework.Serializing;
 
+/// <summary>
+/// An error thrown by the serializing framework
+/// </summary>
 public class SerializingException : Exception
 {
-    public SerializingException(string message) : base(message) { }
+    internal SerializingException(string message) : base(message) { }
 }

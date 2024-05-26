@@ -1,10 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <Title>Basalt Serializing Framework</Title>
+    <Authors>Damocles</Authors>
+    <Description>A serializing framework for basalt applications</Description>
+    <Version>1.0.0</Version>
+
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <RepositoryUrl>https://github.com/BrandenEK/Basalt.Framework.Serializing</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
