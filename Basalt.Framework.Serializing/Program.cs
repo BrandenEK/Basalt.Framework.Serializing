@@ -13,7 +13,7 @@ internal class Program
         double dec = 5.56;
         string? str = null;
 
-        var stream = new SerializableStream();
+        var stream = new OutStream();
         stream.Write_byte(type);
         stream.Write_uint(bitfield);
         stream.Write_double(dec);
@@ -22,7 +22,7 @@ internal class Program
 
         File.WriteAllBytes(path, stream);
 
-        DeserializableStream dStream = File.ReadAllBytes(path);
+        InStream dStream = File.ReadAllBytes(path);
         Console.WriteLine(dStream.Read_byte());
         Console.WriteLine(dStream.Read_uint());
         Console.WriteLine(dStream.Read_double());

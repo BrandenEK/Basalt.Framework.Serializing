@@ -1,12 +1,12 @@
 ﻿
 namespace Basalt.Framework.Serializing;
 
-public class DeserializableStream
+public class InStream
 {
     private readonly byte[] _bytes;
     private int _pointer = 0;
 
-    private DeserializableStream(byte[] bytes)
+    private InStream(byte[] bytes)
     {
         _bytes = bytes;
     }
@@ -98,5 +98,5 @@ public class DeserializableStream
         return value;
     }
 
-    public static implicit operator DeserializableStream(byte[] bytes) => new DeserializableStream(bytes);
+    public static implicit operator InStream(byte[] bytes) => new InStream(bytes);
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace Basalt.Framework.Serializing;
 
-public class SerializableStream
+public class OutStream
 {
     private readonly List<byte> _bytes = new();
 
@@ -77,5 +77,5 @@ public class SerializableStream
         _bytes.AddRange(bytes);
     }
 
-    public static implicit operator byte[](SerializableStream stream) => stream._bytes.ToArray();
+    public static implicit operator byte[](OutStream stream) => stream._bytes.ToArray();
 }
