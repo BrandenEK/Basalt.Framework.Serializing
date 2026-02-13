@@ -139,6 +139,15 @@ public class InStream
     }
 
     /// <summary>
+    /// Reads the next data in the stream
+    /// </summary>
+    public byte[] Read_data(int length)
+    {
+        ValidateReadLength(length);
+        return _bytes[_pointer..(_pointer + length)];
+    }
+
+    /// <summary>
     /// Creates a new InStream from a byte[]
     /// </summary>
     public static implicit operator InStream(byte[] bytes) => new InStream(bytes);

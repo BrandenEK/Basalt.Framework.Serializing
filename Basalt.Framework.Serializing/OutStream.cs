@@ -8,7 +8,7 @@ namespace Basalt.Framework.Serializing;
 /// </summary>
 public class OutStream
 {
-    private readonly List<byte> _bytes = new();
+    private readonly List<byte> _bytes = [];
 
     /// <summary>
     /// Writes a byte to the stream
@@ -116,6 +116,14 @@ public class OutStream
 
         _bytes.Add((byte)bytes.Length);
         _bytes.AddRange(bytes);
+    }
+
+    /// <summary>
+    /// Writes a byte[] to the stream
+    /// </summary>
+    public void Write_data(byte[] data)
+    {
+        _bytes.AddRange(data);
     }
 
     /// <summary>
